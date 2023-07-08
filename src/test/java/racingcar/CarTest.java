@@ -11,7 +11,9 @@ public class CarTest {
     void carHasName() {
         // given
         String name = "eden";
-        CarName carName = new CarName(name);
+        int minLength = 1;
+        int maxLength = 5;
+        CarName carName = new CarName(minLength, maxLength, name);
 
         // when
         Car car = new Car(carName);
