@@ -11,9 +11,13 @@ public class CarTest {
     void carHasName() {
         // given
         String name = "eden";
-        int minLength = 1;
-        int maxLength = 5;
-        CarName carName = new CarName(minLength, maxLength, name);
+        int minLengthNum = 1;
+        CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
+        int maxLengthNum = 5;
+        CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
+        CarNameLengthConstraint carNameLengthConstraint = new CarNameLengthConstraint(minLength, maxLength);
+
+        CarName carName = new CarName(carNameLengthConstraint, name);
 
         // when
         Car car = new Car(carName);

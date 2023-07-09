@@ -2,37 +2,36 @@ package racingcar;
 
 public class CarName {
     private final String name;
-    private final int minLength;
-    private final int maxLength;
+    private final CarNameLengthConstraint carNameLengthConstraint;
 
 
-    public CarName(int minLength, int maxLength, String name) {
-        this.validateMinMaxLength(minLength, maxLength);
-        this.minLength = minLength;
-        this.maxLength = maxLength;
+    public CarName(CarNameLengthConstraint carNameLengthConstraint, String name) {
+        this.carNameLengthConstraint = carNameLengthConstraint;
 
         this.validateNameLength(name);
         this.name = name;
     }
 
-    private void validateMinMaxLength(int minLength, int maxLength) {
-        if (minLength >= maxLength) {
-            throw new IllegalArgumentException("최소 길이는 최대 길이보다 클 수 없습니다.");
+
+    private void validateNameLength(String name) {
+        int minLength = this.carNameLengthConstraint.getCarNameMinLength().getMinLength();
+        int maxLength = this.carNameLengthConstraint.getCarNameMaxLength().getMaxLength();
+
+        if (isNull(name)) {
+            throw new IllegalArgumentException("이름은 " + minLength + "자 이상 " + maxLength + "자 이하여야 합니다.");
         }
 
-        if (minLength < 0 || maxLength < 0) {
-            throw new IllegalArgumentException("이름 길이 제한은 음수일 수 없습니다");
+        if (isNameViolateLengthContraint(name, minLength, maxLength)) {
+            throw new IllegalArgumentException("이름은 " + minLength + "자 이상 " + maxLength + "자 이하여야 합니다.");
         }
     }
 
-    private void validateNameLength(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("이름은 " + this.minLength + "자 이상 " + this.maxLength + "자 이하여야 합니다.");
-        }
+    private static boolean isNull(String name) {
+        return name == null;
+    }
 
-        if (name.length() > this.maxLength || name.length() < this.minLength) {
-            throw new IllegalArgumentException("이름은 " + this.minLength + "자 이상 " + this.maxLength + "자 이하여야 합니다.");
-        }
+    private boolean isNameViolateLengthContraint(String name, int minLength, int maxLength) {
+        return name.length() > maxLength || name.length() < minLength;
     }
 
     public String getName() {
