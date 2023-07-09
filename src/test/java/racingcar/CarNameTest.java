@@ -39,7 +39,7 @@ class CarNameTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            CarName carName = new CarName(carNameLengthConstraint, name);
+            new CarName(carNameLengthConstraint, name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }
@@ -57,7 +57,7 @@ class CarNameTest {
 
         // then
         assertThatThrownBy(() -> {
-            CarName carName = new CarName(carNameLengthConstraint, name);
+            new CarName(carNameLengthConstraint, name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }
@@ -75,7 +75,7 @@ class CarNameTest {
 
         // then
         assertThatThrownBy(() -> {
-            CarName carName = new CarName(carNameLengthConstraint, name);
+            new CarName(carNameLengthConstraint, name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }

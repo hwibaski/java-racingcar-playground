@@ -15,7 +15,7 @@ class CarNameMaxLengthTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
+            new CarNameMaxLength(maxLengthNum);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름 길이 제한은 음수이거나 0일 수 없습니다");
     }

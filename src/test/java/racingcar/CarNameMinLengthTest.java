@@ -16,7 +16,7 @@ class CarNameMinLengthTest {
         // when
         // then
         assertThatThrownBy(() -> {
-            CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
+            new CarNameMinLength(minLengthNum);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름 길이 제한은 음수이거나 0일 수 없습니다");
     }
