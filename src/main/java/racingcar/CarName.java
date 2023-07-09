@@ -21,16 +21,16 @@ public class CarName {
             throw new IllegalArgumentException("이름은 " + minLength + "자 이상 " + maxLength + "자 이하여야 합니다.");
         }
 
-        if (isNameViolateLengthContraint(name, minLength, maxLength)) {
+        if (isNameViolateLengthConstraint(name, minLength, maxLength)) {
             throw new IllegalArgumentException("이름은 " + minLength + "자 이상 " + maxLength + "자 이하여야 합니다.");
         }
     }
 
-    private static boolean isNull(String name) {
+    private boolean isNull(String name) {
         return name == null;
     }
 
-    private boolean isNameViolateLengthContraint(String name, int minLength, int maxLength) {
+    private boolean isNameViolateLengthConstraint(String name, int minLength, int maxLength) {
         return name.length() > maxLength || name.length() < minLength;
     }
 
