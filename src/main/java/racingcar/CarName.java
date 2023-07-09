@@ -5,9 +5,8 @@ public class CarName {
     private final CarNameLengthConstraint carNameLengthConstraint;
 
 
-    public CarName(CarNameLengthConstraint carNameLengthConstraint, String name) {
-        this.carNameLengthConstraint = carNameLengthConstraint;
-
+    public CarName(String name) {
+        this.carNameLengthConstraint = new CarNameLengthConstraint(new CarNameMinLength(1), new CarNameMaxLength(5));
         this.validateNameLength(name);
         this.name = name;
     }

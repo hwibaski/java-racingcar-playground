@@ -12,14 +12,9 @@ class CarNameTest {
     void carName() {
         // given
         String name = "test";
-        int minLengthNum = 1;
-        CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
-        int maxLengthNum = 5;
-        CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
-        CarNameLengthConstraint carNameLengthConstraint = new CarNameLengthConstraint(minLength, maxLength);
 
         // when
-        CarName carName = new CarName(carNameLengthConstraint, name);
+        CarName carName = new CarName(name);
 
         // then
         assertThat(carName.getName()).isEqualTo(name);
@@ -30,16 +25,11 @@ class CarNameTest {
     void nullCarName() {
         // given
         String name = null;
-        int minLengthNum = 1;
-        CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
-        int maxLengthNum = 5;
-        CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
-        CarNameLengthConstraint carNameLengthConstraint = new CarNameLengthConstraint(minLength, maxLength);
 
         // when
         // then
         assertThatThrownBy(() -> {
-            new CarName(carNameLengthConstraint, name);
+            new CarName(name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }
@@ -49,15 +39,10 @@ class CarNameTest {
     void CarNameMaxLength() {
         // given
         String name = "abcdef";
-        int minLengthNum = 1;
-        CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
-        int maxLengthNum = 5;
-        CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
-        CarNameLengthConstraint carNameLengthConstraint = new CarNameLengthConstraint(minLength, maxLength);
 
         // then
         assertThatThrownBy(() -> {
-            new CarName(carNameLengthConstraint, name);
+            new CarName(name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }
@@ -67,15 +52,10 @@ class CarNameTest {
     void CarNameMinLength() {
         // given
         String name = "";
-        int minLengthNum = 1;
-        CarNameMinLength minLength = new CarNameMinLength(minLengthNum);
-        int maxLengthNum = 5;
-        CarNameMaxLength maxLength = new CarNameMaxLength(maxLengthNum);
-        CarNameLengthConstraint carNameLengthConstraint = new CarNameLengthConstraint(minLength, maxLength);
 
         // then
         assertThatThrownBy(() -> {
-            new CarName(carNameLengthConstraint, name);
+            new CarName(name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 1자 이상 5자 이하여야 합니다.");
     }
